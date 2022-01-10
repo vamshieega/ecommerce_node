@@ -3,7 +3,7 @@ const User = require("../models/User");
 const CryptoJS = require("crypto-js");
 const jwt = require("jsonwebtoken");
 
-router.post("/register", async (req, res) => {
+router.post("/register", async (req, res, next) => {
   const newUser = new User({
     username: req.body.username,
     email: req.body.email,
@@ -17,13 +17,13 @@ router.post("/register", async (req, res) => {
     const savedUser = await newUser.save();
     res.status(201).json(savedUser);
   } catch (err) {
-    next(e)
+    next(e);
     console.log("error", err);
     res.status(500).json(err);
   }
 });
 
-router.post("/login", async (req, res) => {
+router.post("/login", async (req, res, next) => {
   try {
     const user = await User.findOne({ username: req.body.username });
     !user && res.status(401).json("no username found");
@@ -51,7 +51,7 @@ router.post("/login", async (req, res) => {
     //we are sending the accessToken to user
     res.status(200).json({ ...others, accessToken });
   } catch (err) {
-    next(e)
+    next(e);
     res.status(500).json(err);
   }
 });
