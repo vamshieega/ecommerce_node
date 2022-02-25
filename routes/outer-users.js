@@ -1,6 +1,6 @@
 const router = require("express").Router();
 
-app.get("/testRoute", function (req, res) {
+app.get("/", function (req, res) {
   res.send({
     userdata: [
       {
