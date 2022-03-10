@@ -845,4 +845,12 @@ router.get("/userdata", async (req, res) => {
     ]);
   } catch (err) {}
 });
+
+//test
+
+router.get("/", async (req, res) => {
+  try {
+    res.status(200).json(["Welcome ecommerce API is running"]);
+  } catch (err) {}
+});
 module.exports = router;

@@ -32,5 +32,5 @@ app.use("/api/orders", orderRoute);
 app.use("/api/checkout", stripeRoute);
 
 app.listen(process.env.PORT || 5000, () => {
-  console.log("server is running");
+  console.log("server is running on 5000 port");
 });
